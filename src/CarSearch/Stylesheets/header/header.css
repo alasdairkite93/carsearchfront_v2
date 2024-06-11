@@ -1,0 +1,32 @@
+
+
+.textgrid {
+    grid-template-columns: auto auto auto;
+    grid-auto-rows: minmax(0px, auto);
+    background: black;
+    color: white;
+}
+
+
+#headertext {
+    font-size: 30px;
+    color: white;
+    display: inline-block;
+}
+
+#sitewarn {
+    display: inline-block;
+    font-size: 20px;
+    color: white;
+    margin-left: 30px;
+}
+
+#headertitle {
+    font-size: 20px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    margin-left: 200px;
+}
+
+

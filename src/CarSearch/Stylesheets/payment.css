@@ -1,0 +1,61 @@
+
+
+.paymentinformation {
+    width: 600px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#creditbox {
+    padding: 0 10px 0 10px;
+    border-radius: 3px;
+    background: url("https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png") no-repeat center;
+    background-size: 100px 20px;
+    font-size: 16px;
+    background-position-x: calc(100% - 150px);
+    height: 60px;
+    width: 400px;
+    border: solid #707070 1px;
+    margin-right: 10px;
+}
+
+#paypalbox {
+    padding: 0 10px 0 10px;
+    border-radius: 3px;
+    background: url("https://i.imgur.com/35tC99g.png") no-repeat center;
+    background-size: 30px 30px;
+    font-size: 16px;
+    background-position-x: calc(100% - 300px);
+    height: 60px;
+    width: 400px;
+    border: solid #707070 1px;
+    margin-right: 10px;
+}
+
+#mobilebox {
+    padding: 0 10px 0 10px;
+    border-radius: 3px;
+    background: url("https://i.imgur.com/2ISgYja.png") no-repeat center;
+    background-size: 40px 30px;
+    font-size: 16px;
+    background-position-x: calc(100% - 230px);
+    height: 60px;
+    width: 400px;
+    border: solid #707070 1px;
+    margin-right: 10px;
+}
+
+.arrow {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    bottom: 30px;
+    top: 20px;
+    border-top: 1px solid #707070;
+    border-right: 1px solid #707070;
+    right: 40px;
+}
+
+.right {
+    transform: rotate(45deg);
+}

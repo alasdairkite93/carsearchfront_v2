@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {renderurl} from "./CarSearch/components/globalvar";
 
 function LoginToken(props) {
 
@@ -34,7 +35,8 @@ function LoginToken(props) {
     function logMeIn(event) {
         axios({
             method: "POST",
-            url: "http://127.0.0.1:4242/token",
+            // url: "http://127.0.0.1:4242/token",
+            url: renderurl+"/token",
             data: {
                 username: loginForm.username,
                 password: loginForm.password
@@ -75,7 +77,8 @@ function LoginToken(props) {
 
                 axios({
                     method: "POST",
-                    url: 'http://127.0.0.1:4242/register',
+                    url: renderurl+'/register',
+                    // url: "http://127.0.0.1:4242/token",
                     data: {
                         username: registerForm.username,
                         password: registerForm.password,

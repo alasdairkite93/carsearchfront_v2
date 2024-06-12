@@ -1,7 +1,7 @@
 
 import React, {useState} from "react";
 import axios from "axios";
-
+import {renderurl} from "../CarSearch/components/globalvar";
 export default function Dashboard(props) {
 
 
@@ -10,7 +10,7 @@ export default function Dashboard(props) {
     function getData() {
         axios({
             method: "GET",
-            url:"http://127.0.0.1:4242/showusers",
+            url: renderurl+"/showusers",
             headers: {
                 Authorization: 'Bearer ' + props.token
             }

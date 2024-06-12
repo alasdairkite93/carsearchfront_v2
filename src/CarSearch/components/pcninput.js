@@ -7,6 +7,8 @@ import '../Stylesheets/centre/centrestyles.css';
 import '../Stylesheets/forms.css';
 import '../Stylesheets/infopage.css'
 
+import {renderurl} from "./globalvar";
+
 export default function PCNInput(props) {
 
     const [regnum, setReg] = useState();
@@ -29,7 +31,7 @@ export default function PCNInput(props) {
 
         try {
             // const {data} = await axios.post('https://emailback2.onrender.com/postrequest', {
-            const {data} = await axios.post('http://127.0.0.1:4242/postrequest', {
+            const {data} = await axios.post(renderurl+'/postrequest', {
 
                 reg_number,
                 pcn_number

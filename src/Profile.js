@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import axios from "axios";
+import {renderurl} from "./CarSearch/components/globalvar";
 function Profile(props) {
 
     const [profileData, setProfileData] = useState(null)
     function getData() {
         axios({
             method: "POST",
-            url:"http://127.0.0.1:4242/profile",
+            url:renderurl+"/profile",
             headers: {
                 Authorization: 'Bearer ' + props.token
             },

@@ -4,26 +4,28 @@ import {Outlet, useNavigate} from "react-router-dom";
 import logMeOut from "./LogMeOut";
 import axios from "axios";
 import {useEffect, useState} from "react";
-
+import {renderurl} from "../CarSearch/components/globalvar";
 function PrivatePaymentRoute(props) {
 
 
-    const [payStatus, setPayStatus] = useState();
+    const [payStatus, setPayStatus] = useState(false);
     useEffect(() => {
 
         console.log(localStorage.getItem('username'));
         axios({
             method: "POST",
-            url: 'http://127.0.0.1:4242/payment_status',
+            url: renderurl+'/getPaid',
             headers: {
                 Authorization: 'Bearer ' + props.token
             },
             data: {
-                username: localStorage.getItem('username')
+                username: localStorage.getItem('username'),
             }
         }).then((response) => {
-            console.log('UPDATED Payment '+response.data.status);
-            setPayStatus(response.data.status);
+            console.log('Get PAID: ' + response.data.payment);
+            const pay_status = response.data.payment;
+
+            setPayStatus(pay_status);
             // setPay(JSON.stringify(response.data.status));
         }).catch((error) => {
             if (error.response) {
@@ -38,11 +40,15 @@ function PrivatePaymentRoute(props) {
 
     const navigate = useNavigate();
 
-    if (payStatus == true) {
+    console.log('paystatus: '+payStatus);
+
+    if (payStatus === true) {
+        console.log('pay status is true: '+payStatus)
         return <Outlet />
     }
     else {
-        navigate("/payment");
+        console.log('navigate toL '+renderurl+"/payment")
+        navigate("http://localhost:3000/payment");
     }
 
 }

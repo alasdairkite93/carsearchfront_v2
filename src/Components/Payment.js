@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {renderurl} from "../CarSearch/components/globalvar";
 
 const Message = ({message}) => (
     <section>
@@ -23,7 +24,9 @@ const SuccessDisplay = ({sessionId}) => {
                     <h3>Subscription to starter plan successful!</h3>
                 </div>
             </div>
-            <form action="http://127.0.0.1:4242/create-portal-session" method="POST">
+            {/*<form action="http://127.0.0.1:4242/create-portal-session" method="POST">*/}
+                <form action={renderurl+"/create-portal-session"} method="POST">
+
                 <input
                     type="hidden"
                     id="session-id"
@@ -61,7 +64,8 @@ export default function Payment(props) {
 
         axios({
             method: "POST",
-            url: 'http://127.0.0.1:4242/create_customer',
+            // url: 'http://127.0.0.1:4242/create_customer',
+            url: renderurl+'/create_customer',
             headers: {
                 Authorization: 'Bearer ' + props.token
             },
@@ -103,8 +107,9 @@ export default function Payment(props) {
                     <h5>$3.00 / month</h5>
                 </div>
             </div>
-            <form action="http://127.0.0.1:4242/create-checkout-session" method="POST">
-                <input type="hidden" name="lookup_key" value="price_1PCnGm2LoquNKfKzB9UtPY2K"/>
+            {/*<form action="http://127.0.0.1:4242/create-checkout-session" method="POST">*/}
+            <form action={renderurl+"/create-checkout-session"} method="POST">
+            <input type="hidden" name="lookup_key" value="price_1PCnGm2LoquNKfKzB9UtPY2K"/>
                 <input type="hidden" name="username" value={localStorage.getItem('username')}/>
                 <input type="hidden" name="sessionid" value={localStorage.getItem('session_id')}/>
                 <button onClick={createCustomer} id="checkout-and-portal-button" type="submit">
@@ -118,7 +123,8 @@ export default function Payment(props) {
 
         axios({
             method: "POST",
-            url: 'http://127.0.0.1:4242/cancel_payment',
+            // url: 'http://127.0.0.1:4242/cancel_payment',
+            url: renderurl+'/cancel_payment',
             headers: {
                 Authorization: 'Bearer ' + props.token
             },
@@ -140,7 +146,8 @@ export default function Payment(props) {
     useEffect(() => {
         axios({
             method: "POST",
-            url: 'http://127.0.0.1:4242/getPaid',
+            // url: 'http://127.0.0.1:4242/getPaid',
+            url: renderurl+'/getPaid',
             headers: {
                 Authorization: 'Bearer ' + props.token
             },
@@ -164,7 +171,8 @@ export default function Payment(props) {
 
         axios({
             method: "POST",
-            url: 'http://127.0.0.1:4242/update_payment',
+            // url: 'http://127.0.0.1:4242/update_payment',
+            url: renderurl+'/update_payment',
             headers: {
                 Authorization: 'Bearer ' + props.token
             },

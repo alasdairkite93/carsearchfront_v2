@@ -12,9 +12,11 @@ import PCNInput from "./components/pcninput";
 import LongBlueLine from "./components/longblue";
 import Footer from "./components/footer";
 
+import ExistingVehicles from "./components/existingvehicles";
+
 import useToken from "../useToken";
 
-function Home(props) {
+function Home() {
 
     const {token, removeToken, setToken, effect} = useToken();
 
@@ -24,6 +26,7 @@ function Home(props) {
             <Header />
             <BlueLine />
             <BackButton/>
+            <ExistingVehicles />
             <PCNInput token={token} setToken={setToken}/>
             <LongBlueLine/>
             <Footer />

@@ -12,24 +12,49 @@ import '../Stylesheets/pay.css';
 import '../Stylesheets/forms.css';
 import axios from "axios";
 import {Link, Navigate, useLocation, useNavigate} from 'react-router-dom';
+import {renderurl} from "../components/globalvar";
 
 
-export default function SummaryPage() {
+export default function SummaryPage(props) {
 
 
     const navigate = useNavigate();
     const location = useLocation();
     const state = location.state;
 
-    console.log('Summary page state: ' + JSON.stringify(state));
+    console.log('Summary page state: ' + JSON.stringify(state.vehcilestate.emailstate));
     console.log(state.vehcilestate);
 
+    const emailstate = JSON.stringify(state.vehcilestate.emailstate)
+    const textstate = JSON.stringify(state.vehcilestate.textstate)
 
     function handleOnSubmit() {
 
         //Proposed add record to database to signup
+        axios({
+            method: "POST",
+            // url: 'http://127.0.0.1:4242/cancel_payment',
+            url: renderurl+'/updatePreference',
+            headers: {
+                Authorization: 'Bearer ' + props.token
+            },
+            data: {
+                username: localStorage.getItem('username'),
+                email: emailstate,
+                mobile: textstate
 
-        navigate("/mockpayment", { state: { contactdetail: state.contactdetail, vehcilestate: state.vehcilestate.vehicledetails}});
+            }
+        }).then((response) => {
+            console.log('canceled subscription response: ' + JSON.stringify(response));
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+            }
+        })
+
+        navigate("/signup", { state: { contactdetail: state.contactdetail, vehcilestate: state.vehcilestate.vehicledetails}});
     }
 
     return (

@@ -53,6 +53,8 @@ export default function Payment(props) {
     const [visibleItem, setVisibleItem] = useState()
     const [errorMessage, setErrorMessage] = useState('')
 
+    const [confirmation, setConfirmation] = useState('')
+
     let [message, setMessage] = useState('');
     let [success, setSuccess] = useState(false);
     let [sessionId, setSessionId] = useState('');
@@ -133,6 +135,7 @@ export default function Payment(props) {
             }
         }).then((response) => {
             console.log('canceled subscription response: ' + JSON.stringify(response));
+            setConfirmation('Subscription Cancelled');
         }).catch((error) => {
             if (error.response) {
                 console.log(error.response)
@@ -201,35 +204,10 @@ export default function Payment(props) {
                 <p>You've already made payment</p>
                 <p>To cancel your subscription: </p>
                 <button onClick={cancelSubscription}>Click me</button>
+                <p>{confirmation}</p>
             </div>
         )
     }
-
-    //Use to get values from database
-    // useEffect(() => {
-    //
-    //     axios({
-    //         method: "POST",
-    //         url: 'http://127.0.0.1:4242/return_details',
-    //         headers: {
-    //             Authorization: 'Bearer ' + props.token
-    //         },
-    //         data: {
-    //             username: localStorage.getItem('username'),
-    //         }
-    //     }).then((response) => {
-    //         console.log('Response Details: ' + JSON.stringify(response.data.status));
-    //         setVisibleItem(JSON.stringify(response.data.status));
-    //         console.log('VISIBLE ITEM: ' + visibleItem);
-    //     }).catch((error) => {
-    //         if (error.response) {
-    //             console.log(error.response)
-    //             console.log(error.response.status)
-    //             console.log(error.response.headers)
-    //         }
-    //     })
-    // }, []);
-
 
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout

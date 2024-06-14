@@ -11,9 +11,7 @@ import {renderurl} from "./globalvar";
 
 export default function PCNInput(props) {
 
-    const [regnum, setReg] = useState();
-    const [pcnnum, setPcn] = useState();
-    const [flaskresponse, setResponse] = useState();
+
     const navigate = useNavigate();
     const handleSubmit = async function (e) {
 
@@ -25,16 +23,15 @@ export default function PCNInput(props) {
         console.log('regnum: '+reg_number);
         console.log('pcnNumber: '+pcn_number);
 
-        setPcn(pcn_number);
-        setReg(reg_number);
-
+        const username = localStorage.getItem('username');
 
         try {
             // const {data} = await axios.post('https://emailback2.onrender.com/postrequest', {
             const {data} = await axios.post(renderurl+'/postrequest', {
 
                 reg_number,
-                pcn_number
+                pcn_number,
+                username
             }, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -43,8 +40,6 @@ export default function PCNInput(props) {
             })
 
             console.log('DATA: ', data);
-
-            setResponse(data);
 
             if (data.registration.includes("could not be found")) {
                 document.getElementById("error").innerHTML = "Error these credentials are not recognised,";

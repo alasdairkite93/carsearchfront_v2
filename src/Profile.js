@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from "axios";
 import {renderurl} from "./CarSearch/components/globalvar";
+import Header from "./Header";
+import logMeOut from "./Components/LogMeOut";
 function Profile(props) {
 
     const [profileData, setProfileData] = useState(null)
@@ -16,16 +18,18 @@ function Profile(props) {
             }
         })
             .then((response) => {
+                console.log('PROFILE RESPONSE: '+JSON.stringify(response.data));
                 const res =response.data
                 setProfileData(({
                     username: res[0][0][0],
                     email: res[0][0][1],
+                    numberofcars: res[0][0][2],
                     payment: res[0][1][0]
                 }))
             }).catch((error) => {
             if (error.response) {
                 console.log(error.response)
-                console.log(typeof error.response.status)
+                console.log('status: '+error.response.status)
                 console.log(error.response.headers)
             }
         })}
@@ -39,6 +43,7 @@ function Profile(props) {
                 <p>Profile username: {profileData.username}</p>
                 <p>Email: {profileData.email}</p>
                 <p>Payment: {profileData.payment}</p>
+                <p>Number of cars registered: {profileData.numberofcars}</p>
             </div>
             }
 

@@ -8,7 +8,9 @@ import {renderurl} from "../CarSearch/components/globalvar";
 function PrivatePaymentRoute(props) {
 
 
-    const [payStatus, setPayStatus] = useState(false);
+    const [payStatus, setPayStatus] = useState();
+    const navigate = useNavigate();
+
     useEffect(() => {
 
         console.log(localStorage.getItem('username'));
@@ -26,7 +28,14 @@ function PrivatePaymentRoute(props) {
             const pay_status = response.data.payment;
 
             setPayStatus(pay_status);
-            // setPay(JSON.stringify(response.data.status));
+            if (pay_status === true) {
+                // console.log('pay status is true: '+pay_status)
+                return <Outlet />
+            }
+            else {
+                console.log('navigate toL '+"http://localhost:3000/payment")
+                navigate("/payment");
+            }
         }).catch((error) => {
             if (error.response) {
                 console.log(error.response)
@@ -38,17 +47,15 @@ function PrivatePaymentRoute(props) {
             }})
     }, []);
 
-    const navigate = useNavigate();
 
-    console.log('paystatus: '+payStatus);
 
     if (payStatus === true) {
         console.log('pay status is true: '+payStatus)
         return <Outlet />
     }
     else {
-        console.log('navigate toL '+renderurl+"/payment")
-        navigate("http://localhost:3000/payment");
+        console.log('navigate toL '+"http://localhost:3000/payment")
+        navigate("/payment");
     }
 
 }

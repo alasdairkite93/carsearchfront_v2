@@ -1,7 +1,10 @@
 import axios from "axios";
 import {renderurl} from "./CarSearch/components/globalvar";
+import {useNavigate} from "react-router-dom";
 
 function Header(props) {
+
+    const navigate = useNavigate();
 
     function logMeOut() {
         console.log('header log me out')
@@ -9,9 +12,10 @@ function Header(props) {
             method: "POST",
             url: renderurl+"/logout",
         })
-            .then((response) => {
+            .then(() => {
                 localStorage.clear();
-                props.token()
+                props.token();
+                navigate('/');
                 window.location.reload();
             }).catch((error) => {
             if (error.response) {

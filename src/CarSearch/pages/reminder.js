@@ -10,9 +10,11 @@ import Footer from '../components/footer';
 import LongBlueLine from "../components/longblue";
 import '../Stylesheets/pay.css';
 import {Link, Navigate, useLocation, useNavigate} from 'react-router-dom';
+import axios from "axios";
+import {renderurl} from "../components/globalvar";
 
 
-export default function VehicleReminder() {
+export default function VehicleReminder(props) {
 
     const [email, setEmail] = useState(false);
     const [text, setText] = useState(false);
@@ -42,8 +44,10 @@ export default function VehicleReminder() {
     }
 
     const handleOnClick = () => {
+
+
         if (email === true){
-            navigate("/email", {state: {vehicledetails: state}});
+            navigate("/email", {state: {vehicledetails: state, emailstate: email, textstate: text}});
         }
         if (text === true) {
             navigate("/text", {state: {vehicledetails: state}});

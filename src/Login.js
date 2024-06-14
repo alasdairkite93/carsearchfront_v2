@@ -1,22 +1,11 @@
 import {useState} from 'react';
 import axios from "axios";
-import {Link} from "react-router-dom";
 import {renderurl} from "./CarSearch/components/globalvar";
 
 function LoginToken(props) {
 
 
-    const [email, setEmail] = useState('');
-    const [emailValid, setEmailValid] = useState(false);
-
-    const [username, setUsername] = useState('');
-    const [usernameValid, setUserNameValid] = useState(false);
-
-    const [password, setPassword] = useState('');
-    const [passwordValid, setPasswordValid] = useState(false);
-
     const [emailError, setEmailError] = useState('');
-    const [submitError, setSubmitError] = useState('');
 
     const [loginForm, setloginForm] = useState({
         username: "",
@@ -96,6 +85,8 @@ function LoginToken(props) {
                         case 500:
                             setErrorMessage('Details not accepted');
                             break;
+                        default:
+                            setErrorMessage('');
                     }
                 })
 
@@ -122,26 +113,6 @@ function LoginToken(props) {
     }
 
 
-
-    const isEmailValid = (email) => {
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        return emailPattern.test(email);
-    };
-
-
-
-    const handleEmailChange = (e) => {
-
-        const emailval = e.target.value;
-
-        setEmail(emailval);
-        if (!isEmailValid(emailval)) {
-            setEmailError('Invalid email format.');
-        } else {
-            setEmailError('');
-        }
-
-    };
     function handleChange(event) {
         const {value, name} = event.target
         setloginForm(prevNote => ({
@@ -150,17 +121,10 @@ function LoginToken(props) {
         )
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!emailError) {
-            // Submit form
-        }
-    };
-
     return (
         <div>
             <h1>Login</h1>
-            {visibleItem == "login" &&
+            {visibleItem === "login" &&
                 <form className="login">
                     <input onChange={handleChange}
                            type="email"
@@ -183,7 +147,7 @@ function LoginToken(props) {
             <button onClick={() => setVisibleItem("login")}>
                 Login
             </button>
-            {visibleItem == "register" &&
+            {visibleItem === "register" &&
                 <form>
                     <p>You need to create an account before using this service</p>
                     <label htmlFor="username">Username:</label>
@@ -198,7 +162,6 @@ function LoginToken(props) {
                     {emailError && <p>{emailError}</p>}
                     <button onClick={registerMe}>Submit</button>
                     <p>{errorMessage}</p>
-                    <p>{submitError}</p>
                 </form>
             }
         </div>

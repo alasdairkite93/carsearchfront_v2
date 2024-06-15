@@ -8,10 +8,7 @@ function useToken() {
     function getToken() {
         const userToken = localStorage.getItem('token');
         console.log('get token method: '+userToken);
-        if (userToken === null)
-        {
-            logMeOut();
-        }
+
         return userToken && userToken
     }
 

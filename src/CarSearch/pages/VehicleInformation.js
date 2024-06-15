@@ -14,7 +14,6 @@ export default function VehicleInformation() {
 
     const location = useLocation();
     const state = location.state;
-    console.log('VEHICLE INFORMATION STATE: '+ JSON.stringify(state));
 
     return (
         <div className="App">

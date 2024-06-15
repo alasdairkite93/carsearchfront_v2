@@ -30,8 +30,12 @@ export default function Postsubmit() {
                     <p >{pagestate.registration}</p>
                     <h1>{pagestate.info.make}</h1>
                     <Link to={"/home"} style={{fontSize: "12px"}}>Check another vehicle</Link>
-                    <p><Link style={{fontSize: "12px", marginBottom: "10px"}} to={"/reminder"}
+
+                    <p><Link style={{fontSize: "12px", marginBottom: "10px"}} to={"/vehicleinformation"}
                              state={{ticket: pagestate}}>Get Information and Subscribe</Link></p>
+
+                    {/*<p><Link style={{fontSize: "12px", marginBottom: "10px"}} to={"/reminder"}*/}
+                    {/*         state={{ticket: pagestate}}>Get Information and Subscribe</Link></p>*/}
 
                 </div>
                 <div className="vehiclegrid">

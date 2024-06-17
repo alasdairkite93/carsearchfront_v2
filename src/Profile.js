@@ -24,10 +24,10 @@ function Profile(props) {
                 const res =response.data
                 console.log('email: '+res.user[0].email)
                 setProfileData(({
-                    username: res[0][0][0],
+                    username: res.user[0].username,
                     email: res.user[0].email,
-                    numberofcars: res[0][0][2],
-                    payment: response.stripe.payment
+                    numberofcars: res.user[0].numberofvehicle,
+                    payment: res.stripe[0].payment
                 }))
             }).catch((error) => {
                 console.log('error '+error);

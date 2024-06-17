@@ -29,9 +29,7 @@ function Profile(props) {
                     payment: response.stripe.payment
                 }))
             }).catch((error) => {
-                console.log('error')
-                window.location.reload();
-
+                console.log('error '+error);
         })}
 
 

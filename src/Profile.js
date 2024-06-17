@@ -22,9 +22,10 @@ function Profile(props) {
                 console.log('PROFILE RESPONSE: '+JSON.stringify(response.data));
                 console.log('Stripe: '+JSON.stringify(response.data.stripe));
                 const res =response.data
+                console.log('email: '+res.user[0].email)
                 setProfileData(({
                     username: res[0][0][0],
-                    email: res[0][0][1],
+                    email: res.user[0].email,
                     numberofcars: res[0][0][2],
                     payment: response.stripe.payment
                 }))

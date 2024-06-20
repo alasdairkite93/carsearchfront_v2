@@ -28,7 +28,7 @@ export default function VehicleDetails() {
                     </div>
                     <div className="twoinformation">
                         <h5 id="greycol">Fuel Type</h5>
-                        <h4 style={{fontSize: "20px"}}>{state.info.fuel} </h4>
+                        <h4 style={{fontSize: "20px"}}>{state.fuel} </h4>
                     </div>
                     <div className="threeinformation">
                         <h5 id="greycol">Date of Offence</h5>

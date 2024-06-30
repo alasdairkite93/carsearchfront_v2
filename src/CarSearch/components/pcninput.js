@@ -108,32 +108,32 @@ export default function PCNInput(props) {
                         </div>
                     }
 
-                <h1>What is the vehicle's registration number? </h1>
-                <form onSubmit={handleSubmit} >
-                    <label><b>Registration number (number plate)</b></label>
-                    <p id="exampletext">For example CU57ABC</p>
-                    <input
-                        type="text"
-                        name="regnum"
-                        id="inputbox"
-                        autoCapitalize="on"
-                        required
-                    />
-                    <br/><br/>
-                    <label><b>Penalty Charge Notice (PCN) number</b></label>
-                    <p id="exampletext">Optional</p>
-                    <input
-                        type="text"
-                        name="pcnnum"
-                        autoCapitalize="on"
-                        id="inputbox"
-                        // pattern="^['A-Z']['A-Z'][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
-                        required
-                    />
-                    <br/><br/>
-                    <p style={{color: "red"}}><b>{errormsg}</b></p>
-                    <button type="submit" id="formbutton">Continue</button>
-                </form>
+                {/*<h1>What is the vehicle's registration number? </h1>*/}
+                {/*<form onSubmit={handleSubmit} >*/}
+                {/*    <label><b>Registration number (number plate)</b></label>*/}
+                {/*    <p id="exampletext">For example CU57ABC</p>*/}
+                {/*    <input*/}
+                {/*        type="text"*/}
+                {/*        name="regnum"*/}
+                {/*        id="inputbox"*/}
+                {/*        autoCapitalize="on"*/}
+                {/*        required*/}
+                {/*    />*/}
+                {/*    <br/><br/>*/}
+                {/*    <label><b>Penalty Charge Notice (PCN) number</b></label>*/}
+                {/*    <p id="exampletext">Optional</p>*/}
+                {/*    <input*/}
+                {/*        type="text"*/}
+                {/*        name="pcnnum"*/}
+                {/*        autoCapitalize="on"*/}
+                {/*        id="inputbox"*/}
+                {/*        // pattern="^['A-Z']['A-Z'][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"*/}
+                {/*        required*/}
+                {/*    />*/}
+                {/*    <br/><br/>*/}
+                {/*    <p style={{color: "red"}}><b>{errormsg}</b></p>*/}
+                {/*    <button type="submit" id="formbutton">Continue</button>*/}
+                {/*</form>*/}
                 <p><i><b>Disclaimer</b> This is a third party service not provided by GOV.UK</i></p>
 
             </div>

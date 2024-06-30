@@ -35,7 +35,7 @@ export default function PCNInput(props) {
 
         }).then((response) => {
             console.log('existing vehicles response: '+JSON.stringify(response))
-            console.log(response.data[0].vehiclemake)
+            console.log(response.data[0])
             for (let i=0; i<response.data.length; i++){
                 items.push(<li key={i}><Link to={"/vehicleinformation"} state={response.data[i]}>{response.data[i].vehiclemake}</Link></li>);
             }

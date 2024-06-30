@@ -8,12 +8,13 @@ const ProductDisplay = () => (
     <div className="product">
       <Logo />
       <div className="description">
-        <h3>Starter plan</h3>
-        <h5>$3.00 / month</h5>
+        <h3>Starter plan - Free Trial 30 Days</h3>
+        <h5>£0.99 / month</h5>
       </div>
     </div>
     <form action="http://127.0.0.1:4242/create-checkout-session" method="POST">
-      <input type="hidden" name="lookup_key" value="price_1PCnGm2LoquNKfKzB9UtPY2K" />
+      {/*<input type="hidden" name="lookup_key" value="price_1PCnGm2LoquNKfKzB9UtPY2K" />*/}
+      <input type="hidden" name="lookup_key" value="price_1PXJmx2LoquNKfKzKqxZ4iyy" />
       <button id="checkout-and-portal-button" type="submit">
         Checkout
       </button>
@@ -29,6 +30,9 @@ const CustomerDetails = () => {
 }
 
 const SuccessDisplay = ({ sessionId }) => {
+
+  //propose adding payment logic of setting visitem here.
+
   return (
 
       //propose that on success you could do the business logic
@@ -61,7 +65,7 @@ const Message = ({ message }) => (
   </section>
 );
 
-export default function StripeApp() {
+export default function StripeApp(visitem) {
 
   //in this instance I would add an extra line here to collect customer details for DB
   let [message, setMessage] = useState('');

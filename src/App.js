@@ -44,7 +44,7 @@ function App() {
                                         element={<Dashboard token={token} setToken={setToken}/>}></Route>
 
                                 <Route element={<PrivatePaymentRoute token={token} />}>
-                                    <Route exact path="/home"
+                                    <Route exact path="/"
                                            element={<Home token={token} setToken={setToken}/>}></Route>
                                     <Route exact path="/postsubmit"
                                            element={<Postsubmit token={token} setToken={setToken}/>}></Route>

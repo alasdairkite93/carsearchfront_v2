@@ -19,7 +19,7 @@ export default function PCNInput(props) {
     const items = [];
 
 
-    useEffect(() => {
+    function showVehicles() {
 
         axios({
 
@@ -42,7 +42,8 @@ export default function PCNInput(props) {
             setVehicle(items);
         });
 
-    }, []);
+    }
+
 
     const handleSubmit = async function (e) {
 
@@ -97,6 +98,7 @@ export default function PCNInput(props) {
         <div className="middle-element">
             <div className="two">
                 <p style={{fontSize: "15px"}}><b>View parking penalty charge notice (PCN) issued by local council and Transport for London</b></p>
+                <button onClick={showVehicles}>Show Vehicles</button>
                 <br/>
 
                     {vehicle &&

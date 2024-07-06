@@ -5,13 +5,18 @@ import {renderurl} from "./CarSearch/components/globalvar";
 import User_Pass_img from "./CarSearch/components/registration/user_pass_img";
 import User_Pass from "./CarSearch/components/registration/user_pass";
 
+import CarImg from "./CarSearch/components/registration/car_img";
 import CarInput from "./CarSearch/components/registration/carinput";
 
 import ContactInput from "./CarSearch/components/registration/ContactInput";
+import ContImg from "./CarSearch/components/registration/contimg";
 
 import PaymentPage from "./CarSearch/components/registration/payment";
 
 import StripeApp from "./CarSearch/components/stripeComponents/StripeApp";
+import StripeImg from "./CarSearch/components/registration/stripe_img";
+
+import Login_Img from "./CarSearch/components/registration/login_img";
 
 import './signup.css';
 
@@ -69,61 +74,6 @@ function LoginToken(props) {
         return emailPattern.test(email);
     }
 
-
-
-    function registerMe(event) {
-
-            const email_bool = checkEmail(registerForm.email);
-
-            if (email_bool === true) {
-
-                axios({
-                    method: "POST",
-                    url: renderurl+'/register',
-                    // url: "http://127.0.0.1:4242/token",
-                    data: {
-                        username: registerForm.username,
-                        password: registerForm.password,
-                        email: registerForm.email
-                    }
-                }).then(r => {
-                    console.log("Data: " + JSON.stringify(r.data) + " url: " + r.data.url);
-                    switch (r.data.status) {
-                        case 200:
-                            setVisibleItem('login');
-                            break;
-                        case 400:
-                            setErrorMessage('User already exists');
-                            break;
-                        case 500:
-                            setErrorMessage('Details not accepted');
-                            break;
-                        default:
-                            setErrorMessage('');
-                    }
-                })
-
-                setRegisterForm(({
-                    username: "",
-                    password: "",
-                    email: ""
-                }))
-            }
-            else {
-                setEmailError('Invalid email format.');
-            }
-
-            event.preventDefault();
-
-    }
-
-    function handleRegisterChange(event) {
-
-        const {value, name} = event.target
-        setRegisterForm(prevNote => ({
-            ...prevNote, [name]: value
-        }))
-    }
 
     //propose using effect of where payment is successful using the success url then adding
     //details to the database here
@@ -210,15 +160,10 @@ function LoginToken(props) {
 
     return (
         <div className="center">
-            <button onClick={() => setVisibleItem("login")}>
-                Login
-            </button>
             {visibleItem === "login" &&
-                <form className="login">
-                    <button onClick={() => setVisibleItem("register")}>
-                        Register
-                    </button>
-                    <h1>Login</h1>
+                <form>
+                    <h1>PCN Checker</h1>
+                    <Login_Img item={visibleItem} onDataChange={handleVisChange}/>
                     <input onChange={handleChange}
                            type="email"
                            text={loginForm.username}
@@ -231,55 +176,53 @@ function LoginToken(props) {
                            name="password"
                            placeholder="Password"
                            value={loginForm.password}/>
-                    <button onClick={logMeIn}>Submit</button>
+                    <div className="form-group">
+                        <button id="regbut" onClick={logMeIn}>Submit</button>
+                    </div>
                 </form>
             }
 
 
             {visibleItem === "register" &&
                 <div>
-
-                    <h1>Login Information</h1>
+                    <button onClick={() => setVisibleItem("login")}>
+                        Login
+                    </button>
+                    <h1>Username & Password</h1>
                     <User_Pass_img/>
                     <User_Pass item={visibleItem} onDataChange={handleVisChange}/>
                 </div>
             }
             {visibleItem === "cardetails" &&
                 <div>
-
+                    <button onClick={() => setVisibleItem("login")}>
+                        Login
+                    </button>
                     <h1>Car Details</h1>
+                    <CarImg />
                     <CarInput item={visibleItem} onDataChange={handleVisChange}/>
                 </div>
             }
             {visibleItem === "contacts" &&
                 <div>
-
-                    <h1>Contact Details</h1>
+                    <button onClick={() => setVisibleItem("login")}>
+                        Login
+                    </button>
+                    <h1>Contact Preferences</h1>
+                    <ContImg />
                     <ContactInput item={visibleItem} onDataChange={handleVisChange}/>
                 </div>
             }
             {visibleItem === "payment" &&
                 <div>
-
-                    <h1>Payment Details</h1>
+                    <button onClick={() => setVisibleItem("login")}>
+                        Login
+                    </button>
+                    <h1>Payment </h1>
+                    <StripeImg />
                     <StripeApp item={visibleItem} onDataChange={handleVisChange}/>
                 </div>
             }
-                {/*<form>*/}
-                {/*    <p>You need to create an account before using this service</p>*/}
-                {/*    <label htmlFor="username">Username:</label>*/}
-                {/*    <input onChange={handleRegisterChange} text={registerForm.username} type="text" name="username"*/}
-                {/*           value={registerForm.username} required/>*/}
-                {/*    <label htmlFor="password">Password:</label>*/}
-                {/*    <input onChange={handleRegisterChange} text={registerForm.password} type="password" name="password"*/}
-                {/*           value={registerForm.password} required minLength="6" maxLength="20"/>*/}
-                {/*    <label htmlFor="email">Email:</label>*/}
-                {/*    <input onChange={handleRegisterChange} text={registerForm.email} type="email" name="email"*/}
-                {/*           value={registerForm.email} required/>*/}
-                {/*    {emailError && <p>{emailError}</p>}*/}
-                {/*    <button onClick={registerMe}>Submit</button>*/}
-                {/*    <p>{errorMessage}</p>*/}
-                {/*</form>*/}
 
         </div>
     );

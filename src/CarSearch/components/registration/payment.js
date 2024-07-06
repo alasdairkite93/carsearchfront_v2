@@ -3,8 +3,6 @@ import {useEffect} from "react";
 
 export default function PaymentPage(){
 
-
-
     useEffect(() => {
 
         for (var i = 0; i < localStorage.length; i++){

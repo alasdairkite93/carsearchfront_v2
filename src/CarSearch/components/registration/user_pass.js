@@ -41,10 +41,10 @@ export default function User_Pass(visItem) {
     return (
 
         <form>
-            <label id="labelreg" htmlFor="username">Username:</label>
+            <label id="labelreg" htmlFor="username">Enter the username you would like to use:</label>
             <input onChange={handleRegisterChange} text={registerForm.username} type="text" name="username"
                    value={registerForm.username} required/>
-            <label id="labelreg" htmlFor="password">Password:</label>
+            <label id="labelreg" htmlFor="password">Pick a memorable password:</label>
             <input onChange={handleRegisterChange} text={registerForm.password} type="password" name="password"
                    value={registerForm.password} required minLength="6" maxLength="20"/>
             <div class="form-group">

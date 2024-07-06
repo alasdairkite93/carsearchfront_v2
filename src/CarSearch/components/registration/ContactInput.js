@@ -43,7 +43,6 @@ export default function ContactInput(visitem){
 
         <div>
             <p>{localStorage.getItem('pcn1')}</p>
-            <p>Contact Input</p>
             <form>
                 <label id="labelreg" htmlFor="email">Email:</label>
                 <input onChange={handleChange} type="text" name="email"
@@ -51,10 +50,16 @@ export default function ContactInput(visitem){
                 <label id="labelreg" >Mobile:</label>
                 <input onChange={handleChange} name="mobile" type="text"
                        text={contactForm.mobile} value={contactForm.mobile} required/>
-                <input type="radio" value="mobile" name="preference" onChange={handleChange} />
-                <label >Prefer Mobile</label>
-                <input type="radio" value="email" name="preference" onChange={handleChange} />
-                <label >Prefer Email</label>
+                <label id="labelreg">Preferred method of contact:</label>
+                <select name="preference" id="selcont" onChange={handleChange}>
+                    <option value="1">Mobile</option>
+                    <option value="2">Email</option>
+                </select>
+
+                {/*<input type="radio" value="mobile" name="preference" onChange={handleChange} />*/}
+                {/*<label >Prefer Mobile</label>*/}
+                {/*<input type="radio" value="email" name="preference" onChange={handleChange} />*/}
+                {/*<label >Prefer Email</label>*/}
                 <div className="form-group">
                     <button id="regbut" onClick={submitChange}>Submit</button>
                 </div>

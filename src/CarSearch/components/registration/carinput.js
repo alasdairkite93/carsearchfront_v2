@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-
+import'../../../signup.css';
 export default function CarInput(visitem){
 
     const [numCars, setNumCars] = useState(0);
@@ -14,6 +14,8 @@ export default function CarInput(visitem){
         pcn2: "",
         vim2: ""
     })
+
+
 
     useEffect(() => {
 
@@ -64,14 +66,16 @@ export default function CarInput(visitem){
 
     return (
         <div>
-            <p>Car Details</p>
             <div>
-                <input type="radio" value="0" name="numofcars" onChange={onNumCarsChange} />
-                <label >0</label>
-                <input type="radio" value="1" name="numofcars" onChange={onNumCarsChange} />
-                <label >1</label>
-                <input type="radio" value="2" name="numofcars" onChange={onNumCarsChange} />
-                <label >2</label>
+                <select name="numofcars" onChange={onNumCarsChange}>
+                    <option value="1">1 Car</option>
+                    <option value="2">2 Cars</option>
+                </select>
+
+                {/*<input type="radio" value="1" name="numofcars" onChange={onNumCarsChange} />*/}
+                {/*<label >1</label>*/}
+                {/*<input type="radio" value="2" name="numofcars" onChange={onNumCarsChange} />*/}
+                {/*<label >2</label>*/}
             </div>
             {numCars === "1" &&
                 <form>

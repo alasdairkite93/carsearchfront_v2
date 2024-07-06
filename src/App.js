@@ -1,7 +1,7 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Login from './Login'
 import Profile from './Profile'
-import Header from './Header'
+import RegHeader from './RegHeader'
 import useToken from './useToken'
 import Register from "./Register";
 import {Link} from "react-router-dom";
@@ -23,17 +23,23 @@ import SignUp from "./CarSearch/components/formfiles/signup";
 
 import PrivatePaymentRoute from "./Components/privatePaymentRoute";
 
+//CarSearchGraphComps
+import Header from "./CarSearch/components/header";
+import BlueLine from "./CarSearch/components/blueline";
+
 function App() {
     const {token, removeToken, setToken, effects} = useToken();
 
     return (
         <BrowserRouter>
             <div className="App">
-                <Header token={removeToken}/>
+                <Header />
+                <BlueLine />
                 {!token && token !== "" && token !== undefined ?
                     <Login setToken={setToken}/>
                     : (
                         <>
+                            <RegHeader token={removeToken}/>
                             <Nav token={token} setToken={setToken}/>
                             <Routes>
                                 <Route exact path="/profile"

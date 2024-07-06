@@ -23,8 +23,8 @@ function Home() {
     // new line star
     return (
         <div className="App">
-            <Header />
-            <BlueLine />
+            {/*<Header />*/}
+            {/*<BlueLine />*/}
             <BackButton/>
             <ExistingVehicles />
             <PCNInput token={token} setToken={setToken}/>

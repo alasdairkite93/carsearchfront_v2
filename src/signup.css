@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-input, select, #labelreg {
+input, select, #labelreg, #selcont {
     width: 50%;
     padding: 12px 20px;
     margin: 2px 0;
@@ -16,16 +16,35 @@ input, select, #labelreg {
 }
 
 #regbut {
-    width: 25%;
+    width: 200px;
     padding: 12px 20px;
     margin: 2px 0;
+}
+
+#selcont {
+    margin-bottom: 20px;
+}
+
+select {
+    width: 100px;
+    margin-left: 10px;
 }
 
 .quotebox {
     padding-top: 20px;
 }
 
+input[type="radio"] {
+    margin-right: 0;
+}
+
 .quote {
     color: black;
     font-size: 20px;
+}
+
+#prodboard {
+    margin: 20px;
+    padding-bottom: 20px;
+
 }

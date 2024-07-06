@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from "axios";
 import {renderurl} from "./CarSearch/components/globalvar";
-import Header from "./Header";
+import RegHeader from "./RegHeader";
 import logMeOut from "./Components/LogMeOut";
 
 function Profile(props) {

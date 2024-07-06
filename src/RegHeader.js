@@ -2,7 +2,7 @@ import axios from "axios";
 import {renderurl} from "./CarSearch/components/globalvar";
 import {useNavigate} from "react-router-dom";
 
-function Header(props) {
+function RegHeader(props) {
 
     const navigate = useNavigate();
 
@@ -34,4 +34,4 @@ function Header(props) {
     )
 }
 
-export default Header;
+export default RegHeader;

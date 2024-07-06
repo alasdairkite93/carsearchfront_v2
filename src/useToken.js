@@ -1,5 +1,5 @@
 
-import Header from "./Header";
+import RegHeader from "./RegHeader";
 import {useEffect, useState} from 'react';
 import logMeOut from "./Components/LogMeOut";
 

@@ -68,6 +68,7 @@ export default function CarInput(visitem){
         <div>
             <div>
                 <select name="numofcars" onChange={onNumCarsChange}>
+                    <option value="0" selected>0 Cars</option>
                     <option value="1">1 Car</option>
                     <option value="2">2 Cars</option>
                 </select>

@@ -17,8 +17,6 @@ export default function VehicleInformation() {
 
     return (
         <div className="App">
-            <Header />
-            <BlueLine />
             <BackButton/>
             <VehicleDetails state={state} />
             <LongBlueLine />

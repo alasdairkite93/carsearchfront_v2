@@ -1,0 +1,82 @@
+
+
+.forminput {
+    display: block;
+
+}
+
+#greytext {
+    color: #949494;
+}
+
+#formbutton {
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #00823B;
+    color: white;
+}
+
+#exampletext {
+    font-size: 12px;
+    color: 	#808080;
+}
+
+#inputbox {
+    font-size: 16px;
+    width: 280px;
+    height: 30px;
+    border: 2px solid;
+    font-weight: bold;
+    font-family: Arial, "Arial Rounded MT Bold";
+    margin-bottom: 40px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr, td {
+    padding-top: 20px;
+    border-bottom: 1px solid;
+}
+
+.signupbox {
+
+    width: 100%;
+    height: auto;
+    background-color: #28A197;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.tablecontainer {
+    margin-bottom: 50px;
+    width: 40%;
+}
+
+.spacing {
+    margin-top: 20px;
+}
+
+#margintop {
+    margin-top: 20px;
+}
+
+.pricebox {
+    background-color: #DEE0E2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 2px;
+    margin-top: 20px;
+}

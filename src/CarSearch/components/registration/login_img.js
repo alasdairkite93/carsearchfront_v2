@@ -3,7 +3,7 @@
 export default function Login_Img(visItem) {
 
     function registerMe() {
-        visItem.onDataChange("register");
+        visItem.onDataChange("pcninput");
     }
 
     return (

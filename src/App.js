@@ -3,7 +3,6 @@ import Login from './Login'
 import Profile from './Profile'
 import RegHeader from './RegHeader'
 import useToken from './useToken'
-import Register from "./Register";
 import {Link} from "react-router-dom";
 import Nav from "./Components/Nav";
 import Payment from "./Components/Payment";
@@ -26,6 +25,9 @@ import PrivatePaymentRoute from "./Components/privatePaymentRoute";
 //CarSearchGraphComps
 import Header from "./CarSearch/components/header";
 import BlueLine from "./CarSearch/components/blueline";
+import LongBlueLine from "./oldpcnchecker/longblue";
+import Footer from "./oldpcnchecker/footer";
+import React from "react";
 
 function App() {
     const {token, removeToken, setToken, effects} = useToken();
@@ -77,6 +79,8 @@ function App() {
                             </Routes>
                             </>
                     )}
+                <LongBlueLine/>
+                <Footer/>
             </div>
         </BrowserRouter>
     );

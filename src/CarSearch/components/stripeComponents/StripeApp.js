@@ -13,7 +13,7 @@ const ProductDisplay = () => (
                     <h5>£0.99 / month</h5>
                 </div>
 
-            <form action="https://carsearchback-v2.onrender.com/create-checkout-session" method="POST">
+            <form action={renderurl+"/create-checkout-session"} method="POST">
                 {/*<input type="hidden" name="lookup_key" value="price_1PCnGm2LoquNKfKzB9UtPY2K" />*/}
                 <input type="hidden" name="lookup_key" value="price_1PXJmx2LoquNKfKzKqxZ4iyy"/>
                 <button id="checkout-and-portal-button" style={{marginTop: "10px"}} type="submit">
@@ -47,7 +47,7 @@ const SuccessDisplay = ({sessionId}) => {
                     <h3>Subscription to starter plan successful!</h3>
                 </div>
             </div>
-            <form action="https://carsearchback-v2.onrender.com/create-portal-session" method="POST">
+            <form action={renderurl+"/create-portal-session"} method="POST">
                 <input
                     type="hidden"
                     id="session-id"
@@ -70,6 +70,10 @@ const Message = ({message}) => (
 
 export default function StripeApp(visitem) {
 
+
+    console.log('stored vals regform: '+JSON.stringify(visitem.regForm));
+    console.log('stored vals contform: '+JSON.stringify(visitem.contForm));
+    console.log('stored vals datavals: '+JSON.stringify(visitem.dataVals));
 
     //in this instance I would add an extra line here to collect customer details for DB
     let [message, setMessage] = useState('');

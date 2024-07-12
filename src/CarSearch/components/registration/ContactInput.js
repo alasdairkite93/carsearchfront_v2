@@ -56,10 +56,6 @@ export default function ContactInput(visitem){
                     <option value="2">Email</option>
                 </select>
 
-                {/*<input type="radio" value="mobile" name="preference" onChange={handleChange} />*/}
-                {/*<label >Prefer Mobile</label>*/}
-                {/*<input type="radio" value="email" name="preference" onChange={handleChange} />*/}
-                {/*<label >Prefer Email</label>*/}
                 <div className="form-group">
                     <button id="regbut" onClick={submitChange}>Submit</button>
                 </div>

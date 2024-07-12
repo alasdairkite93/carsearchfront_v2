@@ -1,0 +1,50 @@
+
+
+.pinkbox {
+    background: #ECE2F6;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 100px;
+}
+
+#pinktext {
+    color: #9760B3;
+}
+
+#address {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#challengebutton {
+    background: #624B99;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: white;
+}
+
+.challengecontainer {
+    display: grid;
+    grid-template-columns: 66.6% 33.3%;
+}
+
+.challengecontainertext {
+    grid-column: 1/2;
+}
+
+.challengecontainercontents {
+    grid-column: 2/2;
+}

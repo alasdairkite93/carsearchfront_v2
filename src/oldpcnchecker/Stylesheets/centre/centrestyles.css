@@ -1,0 +1,113 @@
+
+
+.blueheaderline {
+    background-color: dodgerblue;
+}
+
+#greycol {
+    color: #808080;
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+    /*uses the middle grid*/
+    .vehiclegrid {
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr 0.5fr 2fr 1fr;
+        grid-column: 2/3;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    /*uses the middle grid*/
+    .vehiclegrid {
+        grid-column: 2/3;
+    }
+
+    .oneinformation {
+        padding-right: 20px;
+    }
+
+    .twoinformation {
+        padding-right: 20px;
+    }
+
+    .threeinformation {
+        padding-right: 20px;
+    }
+
+    .fourinformation {
+        padding-right: 20px;
+    }
+
+    .fiveinformation {
+        padding-right: 20px;
+    }
+
+
+}
+
+.oneinformation {
+    grid-column: 1/5;
+    grid-row: 1/3;
+    display: inline-block;
+}
+
+.twoinformation {
+    grid-column: 2/5;
+    grid-row: 1/3;
+    display: inline-block;
+
+}
+
+.threeinformation {
+    grid-column: 3/5;
+    grid-row: 1/3;
+    display: inline-block;
+
+}
+
+.fourinformation {
+    grid-column: 4/5;
+    grid-row: 1/3;
+    display: inline-block;
+}
+
+.fiveinformation {
+    grid-column: 5/5;
+    grid-row: 1/3;
+    display: inline-block;
+}
+
+.fiveinformationcontent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.vehiclegridimage {
+    display: grid;
+    grid-template-columns: 66.6% 33.3%;
+    min-height: 300px;
+}
+
+.vehiclegridone {
+    grid-column: 1/2;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+    font-size: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.vehiclegridtwo {
+    grid-column: 2/2;
+    max-height: 400px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}

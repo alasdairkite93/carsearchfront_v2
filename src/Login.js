@@ -18,6 +18,20 @@ import StripeImg from "./CarSearch/components/registration/stripe_img";
 
 import Login_Img from "./CarSearch/components/registration/login_img";
 
+import PCNInputOld from "./oldpcnchecker/pcninputold";
+
+import PostsubmitOld from "./oldpcnchecker/postsubmit";
+
+import VehicleReminder from "./oldpcnchecker/reminder";
+
+import EmailInput from "./oldpcnchecker/emailinput";
+
+import TextInput from "./oldpcnchecker/textinput";
+
+import SummaryPage from "./oldpcnchecker/summarypage";
+
+import RegisterNew from "./Components/registernew";
+
 import './signup.css';
 
 function LoginToken(props) {
@@ -33,11 +47,28 @@ function LoginToken(props) {
     const [registerForm, setRegisterForm] = useState({
         username: "",
         password: "",
-        email: ""
+    })
+
+    const [contactForm, setContactForm] = useState({
+        email: "",
+        mobile: "",
+        preference: ""
+    })
+
+    const [dataOnCar, setDataOnCar] = useState({
+        pcn: "",
+        vim: ""
     })
 
     const [visibleItem, setVisibleItem] = useState('login');
     const [errorMessage, setErrorMessage] = useState('');
+
+    const [dataUpdate, setDataUpdate] = useState();
+
+    const [mobileVal, setMobileVal] = useState();
+
+    const [emailVal, setEmailVal] = useState();
+
 
     function logMeIn(event) {
         axios({
@@ -74,24 +105,49 @@ function LoginToken(props) {
         return emailPattern.test(email);
     }
 
+    useEffect(() => {
+
+        console.log('TEST')
+
+        let user = localStorage.getItem("username");
+        let pass = localStorage.getItem("password");
+
+        let pcn = localStorage.getItem('pcn');
+        let reg = localStorage.getItem('reg');
+
+
+        let email = localStorage.getItem('email');
+        let mobile = localStorage.getItem('mobile');
+        let pref = localStorage.getItem('pref');
+
+        console.log('user: '+user);
+        console.log('pass: '+pass);
+        console.log('pcn: '+pcn);
+        console.log('reg: '+reg);
+        console.log('email: '+email);
+        console.log('mobile: '+mobile);
+        console.log('pref: '+pref);
+
+
+
+    }, []);
+
 
     //propose using effect of where payment is successful using the success url then adding
     //details to the database here
     useEffect(() => {
-
         let href = window.location.href;
         let bool_href = href.includes("success");
 
         const querystring = window.location.search;
-        console.log('querystring Long: '+querystring);
 
         const urlparams = new URLSearchParams(querystring);
-        console.log('urlparams log: '+urlparams);
 
         const sessionid = urlparams.get('session_id');
         console.log('sessionid: '+sessionid);
 
         if (bool_href) {
+
 
             //have to extract the sessionID parameter from the URL
 
@@ -101,46 +157,44 @@ function LoginToken(props) {
             let pcn2 = '';
             let vim2 = '';
 
-            if (localStorage.getItem('pcn2')) {
+            let user = localStorage.getItem("username");
+            let pass = localStorage.getItem("password");
 
-                pcn2 = localStorage.getItem('pcn2');
-                vim2 = localStorage.getItem('vim2');
-                twocars = 2
-            }
+            let pcn = localStorage.getItem('pcn');
+            let reg = localStorage.getItem('reg');
 
-
-
-            let username = localStorage.getItem('username');
-            let password = localStorage.getItem('password');
 
             let email = localStorage.getItem('email');
             let mobile = localStorage.getItem('mobile');
-            let preference = localStorage.getItem('preference');
+            let pref = localStorage.getItem('pref');
+            console.log('email: '+user)
 
             //Remeber to add num cars to request
             axios({
                 method: "POST",
-                url:renderurl+"/addnewuser",
+                url:renderurl+'/addnewuser',
                 data: {
-                    username: username,
-                    password: password,
-                    pcn1: pcn1,
-                    vim1: vim1,
+                    username: user,
+                    password: pass,
+                    pcn1: pcn,
+                    vim1: reg,
                     twocars: twocars,
                     email: email,
                     mobile: mobile,
-                    preferences: preference,
+                    preferences: pref,
                     pcn2: pcn2,
                     vim2: vim2,
                     session_id: sessionid
-                }
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + props.token
+                },
             }).then((response) => {
                 console.log('addnewuser response: '+JSON.stringify(response));
             })
 
         }
-
-        localStorage.clear();
 
     }, []);
 
@@ -154,8 +208,44 @@ function LoginToken(props) {
     }
 
     function handleVisChange(data) {
-        console.log('handlevischange data: '+data);
+        console.log('dataoncar: '+JSON.stringify(dataOnCar));
         setVisibleItem(data);
+    }
+
+    function handleAxiosData(data) {
+        console.log('handleData: '+JSON.stringify(data));
+        setDataOnCar(data);
+        // setDataUpdate(data);
+    }
+
+    function handleVehicData(data) {
+        console.log('dataoncar: '+JSON.stringify(dataOnCar));
+
+        setDataUpdate(data);
+    }
+
+    function handleMobile(data) {
+        console.log('dataoncar: '+JSON.stringify(dataOnCar));
+
+        setMobileVal(data);
+    }
+
+    function handleNewRegisterForm(data){
+        console.log('dataoncar: '+JSON.stringify(dataOnCar));
+
+        setRegisterForm(data)
+    }
+
+    function handleNewContact(data) {
+        console.log('dataoncar: '+JSON.stringify(dataOnCar));
+
+        setContactForm(data);
+    }
+
+    function handleEmail(data) {
+        console.log('dataoncar: '+JSON.stringify(dataOnCar));
+
+        setEmailVal(data);
     }
 
     return (
@@ -181,38 +271,74 @@ function LoginToken(props) {
                     </div>
                 </form>
             }
+            {visibleItem === "pcninput" &&
+                <div>
+                    <PCNInputOld item={visibleItem} newData={handleAxiosData} carData={handleVehicData} onDataChange={handleVisChange}/>
+                </div>
+            }
+            {visibleItem === "postsubmit" &&
+                <div>
+                    <PostsubmitOld item={visibleItem} infovals={dataUpdate} onDataChange={handleVisChange}/>
+                </div>
+            }
+            {
+                visibleItem === "reminder" &&
+                <div>
+                    <VehicleReminder item={visibleItem} onDataChange={handleVisChange}/>
+                </div>
+            }
+            {visibleItem === "email" &&
+                <div>
+                    <EmailInput item={visibleItem}   onDataChange={handleVisChange} setOnEmail={handleEmail} />
+                </div>
+            }
+            {visibleItem === "mobile" &&
+                <div>
+                    <TextInput item={visibleItem} onDataChange={handleVisChange} setOnMobile={handleMobile} />
+                </div>
+            }
+            {visibleItem === "summary" &&
+                <div>
+                    <SummaryPage item={visibleItem} infoVals={dataUpdate} mobVal={mobileVal} emVal={emailVal} onDataChange={handleVisChange} />
+                </div>
+            }
+            {visibleItem === "registernew" &&
+                <div>
+                    <RegisterNew item={visibleItem} onDataChange={handleVisChange} setOnRegister={handleNewRegisterForm} setOnContact={handleNewContact} />
+                </div>
+            }
 
 
-            {visibleItem === "register" &&
-                <div>
-                    <button onClick={() => setVisibleItem("login")}>
-                        Login
-                    </button>
-                    <h1>Username & Password</h1>
-                    <User_Pass_img/>
-                    <User_Pass item={visibleItem} onDataChange={handleVisChange}/>
-                </div>
-            }
-            {visibleItem === "cardetails" &&
-                <div>
-                    <button onClick={() => setVisibleItem("login")}>
-                        Login
-                    </button>
-                    <h1>Car Details</h1>
-                    <CarImg />
-                    <CarInput item={visibleItem} onDataChange={handleVisChange}/>
-                </div>
-            }
-            {visibleItem === "contacts" &&
-                <div>
-                    <button onClick={() => setVisibleItem("login")}>
-                        Login
-                    </button>
-                    <h1>Contact Preferences</h1>
-                    <ContImg />
-                    <ContactInput item={visibleItem} onDataChange={handleVisChange}/>
-                </div>
-            }
+            {/*{visibleItem === "register" &&*/}
+            {/*    <div>*/}
+            {/*        <button onClick={() => setVisibleItem("login")}>*/}
+            {/*            Login*/}
+            {/*        </button>*/}
+            {/*        <h1>Username & Password</h1>*/}
+            {/*        <User_Pass_img/>*/}
+            {/*        <User_Pass item={visibleItem} onDataChange={handleVisChange}/>*/}
+            {/*    </div>*/}
+            {/*}*/}
+            {/*{visibleItem === "cardetails" &&*/}
+            {/*    <div>*/}
+            {/*        <button onClick={() => setVisibleItem("login")}>*/}
+            {/*            Login*/}
+            {/*        </button>*/}
+            {/*        <h1>Car Details</h1>*/}
+            {/*        <CarImg />*/}
+            {/*        <CarInput item={visibleItem} onDataChange={handleVisChange}/>*/}
+            {/*    </div>*/}
+            {/*}*/}
+            {/*{visibleItem === "contacts" &&*/}
+            {/*    <div>*/}
+            {/*        <button onClick={() => setVisibleItem("login")}>*/}
+            {/*            Login*/}
+            {/*        </button>*/}
+            {/*        <h1>Contact Preferences</h1>*/}
+            {/*        <ContImg />*/}
+            {/*        <ContactInput item={visibleItem} onDataChange={handleVisChange}/>*/}
+            {/*    </div>*/}
+            {/*}*/}
             {visibleItem === "payment" &&
                 <div>
                     <button onClick={() => setVisibleItem("login")}>
@@ -220,7 +346,8 @@ function LoginToken(props) {
                     </button>
                     <h1>Payment </h1>
                     <StripeImg />
-                    <StripeApp item={visibleItem} onDataChange={handleVisChange}/>
+                    <StripeApp item={visibleItem} regForm={registerForm} contForm={contactForm}
+                               dataVals={dataUpdate} onDataChange={handleVisChange}/>
                 </div>
             }
 

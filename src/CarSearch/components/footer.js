@@ -16,7 +16,7 @@ export default function Footer() {
                         <Link id="footlinks">Terms and conditions</Link>
                         <Link id="footlinks">Privacy notice</Link>
                     </div>
-                    <p style={{color: "#808080"}}>Copyright &copy; pcn.co.uk</p>
+                    <p style={{color: "#808080"}}>Copyright &copy; pcn.co.uk written by Alasdair Kite trading as OnlineWebServices</p>
                 </div>
             </div>
         </div>

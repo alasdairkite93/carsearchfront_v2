@@ -125,8 +125,9 @@ export default function RegisterNew(visitem) {
                 {/*       text={vimNumber.vim}*/}
                 {/*       value={vimNumber.vim}*/}
                 {/*       required/>*/}
-                <label id="labelreg"><b>Username</b></label>
                 <p>{message}</p>
+                <label id="labelreg"><b>Username</b></label>
+
                 <input onChange={handleRegisterChange}
                        name="username"
                        type="text"

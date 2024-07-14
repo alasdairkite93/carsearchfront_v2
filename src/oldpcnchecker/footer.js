@@ -19,6 +19,7 @@ export default function Footer() {
                     <p style={{color: "#808080"}}>Copyright &copy; pcn.co.uk</p>
                 </div>
             </div>
+
         </div>
     )
 

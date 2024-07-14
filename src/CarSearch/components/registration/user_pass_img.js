@@ -13,4 +13,5 @@ export default function User_pass_img() {
         </div>
     )
 
+
 }

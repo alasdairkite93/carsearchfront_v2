@@ -12,6 +12,7 @@ function RegHeader(props) {
             method: "POST",
             url: renderurl+"/logout",
         })
+
             .then(() => {
                 localStorage.clear();
                 props.token();

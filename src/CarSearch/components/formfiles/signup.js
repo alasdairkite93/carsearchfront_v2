@@ -29,6 +29,7 @@ export default function SignUp() {
             <Header/>
             <BlueLine/>
             <BackButton />
+
             <div className="middle-element">
                 <div className="two" id="margintop">
                     <div className="signupbox">

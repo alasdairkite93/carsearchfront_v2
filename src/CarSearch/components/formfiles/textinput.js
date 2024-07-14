@@ -11,6 +11,7 @@ export default function TextInput() {
     const navigate = useNavigate();
     const [text, setText] = useState('');
 
+
     const location = useLocation();
     const pagestate = location.state;
 

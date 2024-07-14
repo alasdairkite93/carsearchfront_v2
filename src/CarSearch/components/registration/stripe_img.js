@@ -9,6 +9,7 @@ export default function StripeImg() {
             <p>Payments are managed by Stripe and can be cancelled anytime.</p>
         </div>
 
+
     )
 
 }

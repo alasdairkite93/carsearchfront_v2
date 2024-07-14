@@ -49,6 +49,7 @@ export default function PostsubmitOld(props) {
                         <h3>Outstanding Tickets (1)</h3>
                         <table style={{width: "50%", marginLeft: "auto", marginRight: "auto"}}>
                             <tr>
+
                                 <td >{props.infovals.Council} (1)</td>
                                 <td><Link style={{fontSize: "14px", marginBottom: "10px"}} onClick={handleGetInfo}
                                           state={{ticket: pagestate}}>View</Link></td>

@@ -23,6 +23,7 @@ export default function MockPayment() {
     const [email, setEmail] = useState('');
     const pagestate = location.state;
     const handleOnSubmit = () => {
+
         //Suggested to wait for payment to be successful and then to add
         //customer contact details on payment success.
         navigate("/signup", { state: pagestate});

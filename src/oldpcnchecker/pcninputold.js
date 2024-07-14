@@ -112,6 +112,7 @@ export default function PCNInputOld(visitem) {
                         onChange={handleVehicChange}
                         autoCapitalize="on"
                         id="inputbox"
+
                         // pattern="^['A-Z']['A-Z'][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
                         required
                     />

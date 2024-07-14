@@ -1,3 +1,4 @@
+
 import '../../Stylesheets/header/header.css';
 import React, {useState, useEffect} from "react";
 import '../../Stylesheets/layout/centre.css';
@@ -11,6 +12,7 @@ import LongBlueLine from "../../components/longblue";
 import '../../Stylesheets/pay.css';
 import '../../Stylesheets/forms.css'
 import {Link, Navigate, useLocation, useNavigate} from 'react-router-dom';
+
 
 
 export default function Activation() {

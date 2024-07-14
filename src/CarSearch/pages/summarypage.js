@@ -44,6 +44,7 @@ export default function SummaryPage(props) {
                 mobile: textstate
 
             }
+
         }).then((response) => {
             console.log('canceled subscription response: ' + JSON.stringify(response));
         }).catch((error) => {

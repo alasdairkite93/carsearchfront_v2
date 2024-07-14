@@ -27,6 +27,7 @@ export default function EmailInput(emailitem) {
 
     }
 
+
     console.log('EMail input state: '+JSON.stringify(pagestate));
 
     return (

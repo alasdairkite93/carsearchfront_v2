@@ -23,6 +23,7 @@ export default function User_Pass(visItem) {
         localStorage.setItem("username", registerForm.username)
         localStorage.setItem("password", registerForm.password)
 
+
         event.preventDefault();
 
         visItem.onDataChange("cardetails");

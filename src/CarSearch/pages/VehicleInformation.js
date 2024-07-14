@@ -16,6 +16,7 @@ export default function VehicleInformation() {
     const state = location.state;
 
     return (
+
         <div className="App">
             <BackButton/>
             <VehicleDetails state={state} />

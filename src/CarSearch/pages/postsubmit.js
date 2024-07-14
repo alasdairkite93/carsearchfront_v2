@@ -44,6 +44,7 @@ export default function Postsubmit() {
                         <h4>{pagestate.info.color}</h4>
                         {/*<Link style={{fontSize: "12px"}} to={"/vehicleinformation"} state={{ticket: this.state.flask_response}}>Get a PCN reminder</Link>*/}
                     </div>
+
                     <div className="twoinformation">
                         <h5 style={{color: "#808080"}}>Fuel Type</h5>
                         <h4>{pagestate.info.fuel}</h4>

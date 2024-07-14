@@ -24,6 +24,7 @@ function Profile(props) {
                 const res =response.data
                 console.log('email: '+res.user[0].email)
                 setProfileData(({
+
                     username: res.user[0].username,
                     email: res.user[0].email,
                     numberofcars: res.user[0].numberofvehicle,

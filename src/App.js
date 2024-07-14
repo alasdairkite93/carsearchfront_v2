@@ -81,6 +81,7 @@ function App() {
                             </Routes>
                             </>
                     )}
+
                 <LongBlueLine/>
                 <Footer/>
             </div>

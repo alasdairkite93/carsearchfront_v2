@@ -50,7 +50,8 @@ export default function RegisterNew(visitem) {
                 localStorage.setItem('mobile', contactForm.mobile);
                 localStorage.setItem('pref', 'MOBILE');
 
-                localStorage.setItem('vim', vimNumber.vim);
+
+                localStorage.setItem('vim', ' ');
 
                 visitem.setVim(vimNumber);
                 visitem.setOnRegister(registerForm);
@@ -116,14 +117,14 @@ export default function RegisterNew(visitem) {
                     <option value="1" selected>Mobile</option>
                     <option value="2">Email</option>
                 </select>
-                <label id="labelreg"><b>VIM Number</b></label>
-                <input onChange={handleVimChange}
-                       name="vim"
-                       type="text"
-                       id="inputbox"
-                       text={vimNumber.vim}
-                       value={vimNumber.vim}
-                       required/>
+                {/*<label id="labelreg"><b>VIM Number</b></label>*/}
+                {/*<input onChange={handleVimChange}*/}
+                {/*       name="vim"*/}
+                {/*       type="text"*/}
+                {/*       id="inputbox"*/}
+                {/*       text={vimNumber.vim}*/}
+                {/*       value={vimNumber.vim}*/}
+                {/*       required/>*/}
                 <label id="labelreg"><b>Username</b></label>
                 <p>{message}</p>
                 <input onChange={handleRegisterChange}

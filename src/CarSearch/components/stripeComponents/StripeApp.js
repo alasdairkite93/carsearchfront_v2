@@ -41,6 +41,7 @@ const SuccessDisplay = ({sessionId}) => {
         //propose that on success you could do the business logic
         //You may wish to ask customers to add their details before clicking the link
         <section>
+
             <div className="product Box-root">
                 <Logo/>
                 <div className="description Box-root">

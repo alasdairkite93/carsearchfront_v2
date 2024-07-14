@@ -170,6 +170,8 @@ function LoginToken(props) {
                 },
             }).then((response) => {
                 console.log('addnewuser response: '+JSON.stringify(response));
+            }).catch(function (error) {
+                console.log('error: '+error);
             })
 
         }

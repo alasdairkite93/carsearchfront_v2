@@ -58,9 +58,6 @@ export default function EmailInput(props) {
 
     return (
         <div className="App">
-            <Header/>
-            <BlueLine/>
-            <BackButton/>
             <div className="middle-element">
                 <div className="two">
                     <form>

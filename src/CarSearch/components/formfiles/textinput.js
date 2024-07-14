@@ -22,9 +22,6 @@ export default function TextInput() {
 
     return (
         <div className="App">
-            <Header/>
-            <BlueLine/>
-            <BackButton/>
             <div className="middle-element">
                 <div className="two">
                     <form>

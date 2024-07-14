@@ -29,12 +29,14 @@ import LongBlueLine from "./oldpcnchecker/longblue";
 import Footer from "./oldpcnchecker/footer";
 import React from "react";
 
+import LoginButton from "./CarSearch/components/registration/LoginButton";
+
 function App() {
     const {token, removeToken, setToken, effects} = useToken();
 
     return (
         <BrowserRouter>
-            <div className="App">
+            <div >
                 <Header />
                 <BlueLine />
                 {!token && token !== "" && token !== undefined ?

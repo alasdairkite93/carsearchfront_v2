@@ -34,6 +34,8 @@ import RegisterNew from "./Components/registernew";
 
 import './signup.css';
 
+import LoginButton from "./CarSearch/components/registration/LoginButton";
+
 function LoginToken(props) {
 
 
@@ -59,6 +61,8 @@ function LoginToken(props) {
         pcn: "",
         vim: ""
     })
+
+    const [vimNum, setVimNum] = useState();
 
     const [visibleItem, setVisibleItem] = useState('login');
     const [errorMessage, setErrorMessage] = useState('');
@@ -105,34 +109,6 @@ function LoginToken(props) {
         return emailPattern.test(email);
     }
 
-    useEffect(() => {
-
-        console.log('TEST')
-
-        let user = localStorage.getItem("username");
-        let pass = localStorage.getItem("password");
-
-        let pcn = localStorage.getItem('pcn');
-        let reg = localStorage.getItem('reg');
-
-
-        let email = localStorage.getItem('email');
-        let mobile = localStorage.getItem('mobile');
-        let pref = localStorage.getItem('pref');
-
-        console.log('user: '+user);
-        console.log('pass: '+pass);
-        console.log('pcn: '+pcn);
-        console.log('reg: '+reg);
-        console.log('email: '+email);
-        console.log('mobile: '+mobile);
-        console.log('pref: '+pref);
-
-
-
-    }, []);
-
-
     //propose using effect of where payment is successful using the success url then adding
     //details to the database here
     useEffect(() => {
@@ -144,7 +120,6 @@ function LoginToken(props) {
         const urlparams = new URLSearchParams(querystring);
 
         const sessionid = urlparams.get('session_id');
-        console.log('sessionid: '+sessionid);
 
         if (bool_href) {
 
@@ -156,6 +131,8 @@ function LoginToken(props) {
             let twocars = 1
             let pcn2 = '';
             let vim2 = '';
+
+            let vim = localStorage.getItem('vim');
 
             let user = localStorage.getItem("username");
             let pass = localStorage.getItem("password");
@@ -177,7 +154,8 @@ function LoginToken(props) {
                     username: user,
                     password: pass,
                     pcn1: pcn,
-                    vim1: reg,
+                    registration: reg,
+                    vim: vim,
                     twocars: twocars,
                     email: email,
                     mobile: mobile,
@@ -230,6 +208,10 @@ function LoginToken(props) {
         setMobileVal(data);
     }
 
+    function handleVim(data) {
+        setVimNum(data);
+    }
+
     function handleNewRegisterForm(data){
         console.log('dataoncar: '+JSON.stringify(dataOnCar));
 
@@ -238,7 +220,6 @@ function LoginToken(props) {
 
     function handleNewContact(data) {
         console.log('dataoncar: '+JSON.stringify(dataOnCar));
-
         setContactForm(data);
     }
 
@@ -267,44 +248,52 @@ function LoginToken(props) {
                            placeholder="Password"
                            value={loginForm.password}/>
                     <div className="form-group">
-                        <button id="regbut" onClick={logMeIn}>Submit</button>
+                        <button id="formbutton" onClick={logMeIn}>Submit</button>
                     </div>
                 </form>
             }
             {visibleItem === "pcninput" &&
                 <div>
+                    <LoginButton onDataChange={handleVisChange} />
                     <PCNInputOld item={visibleItem} newData={handleAxiosData} carData={handleVehicData} onDataChange={handleVisChange}/>
                 </div>
             }
             {visibleItem === "postsubmit" &&
                 <div>
+                    <LoginButton onDataChange={handleVisChange} />
                     <PostsubmitOld item={visibleItem} infovals={dataUpdate} onDataChange={handleVisChange}/>
                 </div>
             }
             {
                 visibleItem === "reminder" &&
                 <div>
+                    <LoginButton onDataChange={handleVisChange} />
                     <VehicleReminder item={visibleItem} onDataChange={handleVisChange}/>
                 </div>
             }
             {visibleItem === "email" &&
                 <div>
+                    <LoginButton onDataChange={handleVisChange} />
                     <EmailInput item={visibleItem}   onDataChange={handleVisChange} setOnEmail={handleEmail} />
                 </div>
             }
             {visibleItem === "mobile" &&
                 <div>
+                    <LoginButton onDataChange={handleVisChange} />
                     <TextInput item={visibleItem} onDataChange={handleVisChange} setOnMobile={handleMobile} />
                 </div>
             }
             {visibleItem === "summary" &&
                 <div>
+                    <LoginButton onDataChange={handleVisChange} />
                     <SummaryPage item={visibleItem} infoVals={dataUpdate} mobVal={mobileVal} emVal={emailVal} onDataChange={handleVisChange} />
                 </div>
             }
             {visibleItem === "registernew" &&
                 <div>
-                    <RegisterNew item={visibleItem} onDataChange={handleVisChange} setOnRegister={handleNewRegisterForm} setOnContact={handleNewContact} />
+                    <LoginButton onDataChange={handleVisChange} />
+                    <RegisterNew item={visibleItem} onDataChange={handleVisChange} setOnRegister={handleNewRegisterForm}
+                                 setVim={handleVim} setOnContact={handleNewContact} />
                 </div>
             }
 

@@ -21,7 +21,6 @@ export default function TextInput(itemvals) {
 
     return (
         <div className="App">
-            <BackButton/>
             <div className="middle-element">
                 <div className="two">
                     <form>

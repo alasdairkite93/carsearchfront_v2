@@ -14,6 +14,9 @@ export default function VehicleReminder(visitem) {
 
     const [email, setEmail] = useState(false);
     const [text, setText] = useState(false);
+
+    const [preference, setPreference] = useState("mobile");
+
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -29,6 +32,12 @@ export default function VehicleReminder(visitem) {
 
     }
 
+    function handleChange(event) {
+        console.log(event.target.value);
+        setPreference(event.target.value);
+        console.log('Preference: '+preference);
+    }
+
 
     const handleTextChange = (e) => {
 
@@ -40,45 +49,26 @@ export default function VehicleReminder(visitem) {
     }
 
     const handleOnClick = () => {
-        if (email === true){
+        if (preference === "email"){
             visitem.onDataChange("email");
         }
-        if (text === true) {
-            visitem.onDataChange("text");
+        if (preference === "mobile") {
+            visitem.onDataChange("mobile");
         }
     }
 
-    console.log('SELECT REMINDER STATE: '+JSON.stringify(state));
-
     return (
         <div className="App">
-            <BackButton/>
+            {/*<BackButton/>*/}
             <div className="middle-element">
                 <div className="two">
                     <h1>What type of reminder do you want to get ?</h1>
                     <form>
                         <br/><br/>
-                        <label>
-
-                            <input
-                                type="radio"
-                                name="contact"
-                                value="email"
-                                onChange={
-                                    handleEmailChange
-                                }
-                            />
-                            Email
-                        </label>
-                        <br/><br/>
-                        <label>
-                            <input
-                                type="radio"
-                                name="contact"
-                                value="text"
-                                onChange={handleTextChange}
-                            />
-                            Text to my mobile phone </label>
+                        <select name="preference" id="selcont" onChange={handleChange}>
+                            <option value="mobile" selected>Mobile</option>
+                            <option value="email">Email</option>
+                        </select>
                         <br/><br/>
                         <button type="submit" id="formbutton" onClick={handleOnClick}>Continue</button>
                     </form>
@@ -88,8 +78,7 @@ export default function VehicleReminder(visitem) {
                     </div>
                 </div>
             </div>
-            <LongBlueLine />
-            <Footer />
+
         </div>
 
     )

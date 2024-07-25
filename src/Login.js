@@ -132,13 +132,13 @@ function LoginToken(props) {
             let pcn2 = '';
             let vim2 = '';
 
-            let vim = localStorage.getItem('vim');
+            let vim = localStorage.getItem('vim').toUpperCase();
 
             let user = localStorage.getItem("username");
             let pass = localStorage.getItem("password");
 
-            let pcn = localStorage.getItem('pcn');
-            let reg = localStorage.getItem('reg');
+            let pcn = localStorage.getItem('pcn').toUpperCase();
+            let reg = localStorage.getItem('reg').toUpperCase();
 
 
             let email = localStorage.getItem('email');

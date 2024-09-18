@@ -55,7 +55,7 @@ export default function VehicleDetails() {
                             <p>In {state.location} on {state.date} at {state.time}</p>
                         </div>
                         <div className="vehiclegridtwo">
-                            <img src={state.images}/>
+                            <img src="https://res.cloudinary.com/dsfypcapq/image/upload/v1713902802/whitebmw_ucbz14.jpg"/>
                         </div>
                     </div>
                 </div>
